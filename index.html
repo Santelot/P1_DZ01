@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook - Misión</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .section-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: right;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        .time-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .note {
+            background-color: #ffeb3b;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .nav-buttons button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .nav-buttons button:disabled {
+            background-color: #ddd;
+            cursor: not-allowed;
+        }
+    </style>
+    <script>
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-6').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-4').style.display = 'none';
+                document.getElementById('activity-6').style.display = 'none';
+            }
+        }
+
+        function navigateTo(id) {
+            var element = document.getElementById(id);
+            window.scrollTo({
+                top: element.offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</head>
+<body onload="updateActivities()">
+
+<div class="header">
+    <h1>Playbook - Misión</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+    <!-- Actividad 1 (4 pasos) -->
+    <div id="activity-1" class="activity">
+        <div class="banner" onclick="toggleContent('saludo_ritual')">
+            <div class="title">
+                <span>📚 Actividad 1: Saludo y Ritual Gnius Club (4 pasos)</span>
+                <span>⏰ Tiempo: 4.5 minutos</span>
+            </div>
+            <div class="subtitle">Recepción de los genios y motivación para la actividad</div>
+        </div>
+        <div id="saludo_ritual" class="content">
+            <div class="section">
+                <div class="step-title">Paso 1 (1 minuto): Proyectar Diapositiva 2 "Gnius Club"</div>
+                <div class="section-title">Diálogo del Maestro</div>
+                <div class="dialogue">¡Hey, Genios! 🌟 ¿Listos para una aventura épica? Hoy vamos a descubrir cómo funciona “digizen”, la super plataforma que usarán para las misiones de Ciudadanía Digital. ¡Aquí podrán manejar su mon-e y ganar para imprimir en 3D! 🚀 ¡Vamos a rockear!</div>
+            </div>
+            <div class="section">
+                <div class="step-title">Paso 2 (1.5 minutos): Proyectar Diapositiva 3 "¿Cómo están?"</div>
+                <div class="section-title">Diálogo del Maestro</div>
+                <div class="dialogue">Antes de empezar, ¡vamos a ver cómo se sienten hoy! ¿Curiosos por explorar? 🤔 Pongan su mejor cara de “pensando”. ¿Neutrales? 😐 Muestren su cara de “meh”. ¡Estoy emocionado por ver sus expresiones!</div>
+            </div>
+            <div class="section">
+                <div class="step-title">Paso 3 (1 minuto): Proyectar Diapositiva 4 "Gracias por Asistir"</div>
+                <div class="section-title">Diálogo del Maestro</div>
+                <div class="dialogue">¡Vamos a juntar nuestras manos y decir “GRACIAS” por todo lo genial que vamos a aprender hoy! 🙌 ¡Gracias por estar aquí, Genios!</div>
+            </div>
+            <div class="section">
+                <div class="step-title">Paso 4 (1 minuto): Proyectar Diapositiva 5 "Objetivos de la Misión"</div>
+                <div class="section-title">Diálogo del Maestro</div>
+                <div class="dialogue">Hoy tenemos dos objetivos para esta misión 🔍: 1. Abrir nuestra cuenta en “digizen” y explorar la plataforma. 2. ¡Hacer nuestra primera lección de Ciudadanía Digital! ¡Prepárense para ganar puntos! 🎮</div>
+            </div>
+        </div>
+    </div>
+<!-- Actividad 2 (2 pasos) -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('innovacion_dia')">
+        <div class="title">
+            <span>💡 Actividad 2: Innovación del Día (2 pasos)</span>
+            <span>⏰ Tiempo: 2 minutos</span>
+        </div>
+        <div class="subtitle">Introducción a la importancia de la huella digital y la plataforma “digizen”</div>
+    </div>
+    <div id="innovacion_dia" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 6 "Innovación del Día"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Hoy vamos a usar Digizen para desbloquear el superpoder de la Ciudadanía Digital 🦸‍♂️🦸‍♀️, ¡así todo lo que hagamos en línea será seguro y genial! La innovación del día es tu huella digital. 🌟 ¡Veamos un video! 🎥</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1.5 minutos): Proyectar Diapositiva 7 y reproducir el video de la innovación del día.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">“¡ATENCIÓN, Genios! Cada vez que estás en línea, ¡dejas una huella! 👣 Esa información se queda grabada en los servidores de todas las empresas, desde Google hasta tu videojuego favorito. ¡Todo lo que haces queda registrado!”<br>
+                “Y todo esto puede ser BUSCADO por cualquiera. 🕵️‍♂️ ¡Es como si estuvieran rastreando tus pasos!”<br>
+                “¡O pueden COPIARLO sin que te des cuenta! 🖨️ ¡Cuidado con lo que compartes!”<br>
+                “¡Puede ser COMPARTIDO con personas que no deberían verlo! 🤐 ¡Mantén tus cosas seguras!”<br>
+                “¡O se puede TRANSMITIR por muchos canales a un montón de gente! 📡 ¡No dejes que tus secretos se escapen!”<br>
+                “¡Y ES PERMANENTE! Se queda guardado para siempre en los servidores. 💾 ¡Cuidado con lo que dejas en línea!”<br>
+                “Entonces, ¿QUÉ TIPO DE HUELLA DIGITAL QUIERES DEJAR? 🤔 ¡Piensa bien antes de actuar!”
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 3 (9 pasos) -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('brain_gym')">
+        <div class="title">
+            <span>🧠 Actividad 3: Brain Gym (9 pasos)</span>
+            <span>⏰ Tiempo: 14 minutos</span>
+        </div>
+        <div class="subtitle">Exploración de la plataforma “digizen” y creación de cuentas</div>
+    </div>
+    <div id="brain_gym" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 8 "Brain Gym"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Antes de empezar con nuestra primera misión de Ciudadanía Digital, ¡vamos a entrar y explorar la plataforma! 🌐 ¡Será como inscribirte a un Gimnasio para tu cerebro!</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (5 minutos): Proyectar Diapositiva 9 "Entrega Tarjetas"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Les voy a dar a cada uno su nombre de usuario y contraseña en una tarjetita, la vamos a pegar en nuestro cuaderno para que cuando estemos en casa, podamos hacer nuestras misiones de ciudadanía digital. Esa hoja no debe arrancarse, rayarse o maltratarse. ¡Tienen un minuto para pegarlo! ⏰ ¡Listos, Genios!</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar Diapositiva 10 "Cronómetro"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Configurar el cronómetro para que los estudiantes peguen sus tarjetas.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (1.5 minutos): Proyectar Diapositiva 11 "Log In"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">¡Ahora vamos asegurarnos de estar en el lugar correcto! Sin tocar el mouse y sólo con los ojitos en la pantalla, me van a decir si tienen una pantalla igual a la que les estoy enseñando.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 5 (1.5 minutos): Proyectar Diapositiva 12 "Login"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">¡Perfecto, Genios! Voy a poner mi nickname y contraseña, después daré click en la palabra "login". ¿En qué palabra voy a dar "click"? Muy bien, estén muy atentos porque después lo harán ustedes.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 6 (1.5 minutos): Proyectar Diapositiva 13 "Quest y Challenge"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Cada nivel tiene dos retos: “Challenge” y “Quest”. 🏆 ¡No puedes pasar al siguiente nivel hasta completar los dos! Y recuerda, para canjear tu “Mon-e”, ¡debes haber terminado todos los niveles! 💰 ¡Vamos a desbloquear esos poderes digitales!</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 7 (1 minuto): Proyectar Diapositiva 14 "¿Dónde es mi mon-e?"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Para saber cuánto mon-e han acumulado, en el ícono de perfil podrán ver su mon-e. 🤑 ¿Cuánto ganarán con su genialidad?</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 8 (1 minuto): Proyectar Diapositiva 15 "Comprar Impresión 3D"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Para comprar una hora de impresión 3D, en el menú de hamburguesa 🍔 está la tienda de ítems. Recuerden que para desbloquear las horas de impresión 3D, deben completar todas las misiones de Ciudadanía Digital. ¡A imprimir en 3D como campeones! 🖨️</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 9 (0.5 minutos): Proyectar Diapositiva 16 "Avance Objetivos"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">¡Muy bien, Genios! A este ritmo, ¡casi merecen puntos dobles por su misión! ⭐ Ahora, vamos con el reto del día. ¿Están listos?</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 4 (3 pasos) -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('brain_vitamin')">
+        <div class="title">
+            <span>💡 Actividad 4: Brain Vitamin (3 pasos)</span>
+            <span>⏰ Tiempo: 3.5 minutos</span>
+        </div>
+        <div class="subtitle">Ejercicio para activar la mente y prepararse para el reto</div>
+    </div>
+    <div id="brain_vitamin" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 17 "Brain Vitamin"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Antes de ir a nuestro reto del día vamos a activar nuestro cerebro para prepararlo para esta misión.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar Diapositiva 18 y guiar a los Genios con la activación.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">¡OK, genios! ✨ Prepárense para un ejercicio que hará que sus cerebros brillen. Vamos a jugar un juego que no solo es súper divertido, ¡también pondrá a trabajar esas mentes rápidas que tienen! 🚀 Se llama "Palabras en Cadena." 🔗 Imagina que tu cerebro es como una máquina de ideas que nunca para de girar. 🤯<br><br>
+            La dinámica es simple pero desafiante: Yo diré una palabra relacionada con lo que hemos estado estudiando. Luego, el siguiente genio deberá decir una palabra con el tema relacionado, pero ojo, la palabra tiene que empezar con la última letra de la palabra anterior. Por ejemplo si mi palabra es Insecto, que termina con o, el siguiente genio tendrá que decir un insecto con O, podría ser "Oruga". Y así seguimos, formando una cadena de palabras hasta que todos hayamos participado. 🔄 Este juego no solo es un reto, ¡también es una manera genial de conectar ideas a la velocidad de la luz! ⚡<br><br>
+            Y la palabra con la que vamos a empezar es...</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Proyectar Diapositiva 19 y guiar a los Genios con la activación.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Tecnología." 🖥️ Ahora, el genio que sigue, tiene que pensar en una palabra que empiece con la letra "a". ¿Listos? 💪 ¡Recuerden, este ejercicio nos hace más listos y nos prepara para ser unos cracks cuando llegue el momento de responder esas preguntas difíciles! 💡 ¡Vamos, que el siguiente genio dé su palabra! 🎉</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 5 (7 pasos) -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">
+            <span>🏆 Actividad 5: Challenge (7 pasos)</span>
+            <span>⏰ Tiempo: 21.5 minutos</span>
+        </div>
+        <div class="subtitle">Desafío para completar el primer Quest y Challenge en la plataforma Digizen</div>
+    </div>
+    <div id="challenge" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 20 "Challenge"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Y ahora, el desafío de hoy es terminar el primer Quest y Challenge de Ciudadanía Digital en la plataforma Digizen. 💪 ¡Vamos a hacerlo juntos!</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar Diapositiva 21 "Vista del Quest"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Resolvamos esta aventura, pongan mucha atención al vídeo que les voy a poner, porque después tendrán que resolver el "Challenge".</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (3 minutos): Proyectar Diapositiva 22 "Video del Quest"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Proyectar el video del Quest y guiar a los estudiantes en su observación para preparar el Challenge.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (5 minutos): Proyectar Diapositiva 23 "Video Quest" Resolver con los estudiantes el "Challenge"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Para poder responder las preguntas primero tienen que ver ustedes el video en la plataforma, así que van a entrar a su Quest y van a ver el video. Da click en donde te indico en la pantalla. Fíjense cómo mi quest tiene una palomita. Esto es porque yo ya vi el video en mi Quest. Cuando ustedes vean el video en su Quest les va aparecer la palomita.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 5 (1 minuto): Proyectar Diapositiva 24 "Entrar al Challenge"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Ahora vamos hacer el challenge, vamos a responder las preguntas. Todos van a dar "click" al "Challenge" para que lo hagamos juntos. Después van a dar click en comenzar.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 6 (10 minutos): Proyectar Diapositiva 25 "Enviar Respuestas"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Van a escuchar cada pregunta y a seleccionar su respuesta. Las preguntas están en orden diferente en cada Challenge así que pongan atención a su Challenge no al de su compañero. Cuando hayan terminado de elegir sus respuestas, den click en enviar respuesta, y luego otra vez click. Si tuvieron algún error, pueden ir a escoger la otra respuesta.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 7 (1 minuto): Proyectar Diapositiva 26 "Avance Objetivos" y felicita a los Genios</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">¡Woooow! ¡Lo lograron Genios! Cumplieron con los objetivos de la misión así que les toca llevar mon-e.</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 6 (1 paso) -->
+<div id="activity-6" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">
+            <span>🎓 Actividad 6: Honor de Dojo (1 paso)</span>
+            <span>⏰ Tiempo: 3 minutos</span>
+        </div>
+        <div class="subtitle">Cerrar la misión y despedir a los genios con energía positiva</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (3 minutos): Proyectar Diapositiva 27 "Honor de LAB"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Por último vamos hacer logout de su cuenta, así que vean como lo hago yo y después ustedes lo realizarán.</div>
+        </div>
+    </div>
+</div>
+
+</div>
+</body>
+</html>
